@@ -8,7 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9247a0d9ba2cc041a43884f97cee74b, type: 3}
-  m_Name: PlayerJumpForce
+  m_Script: {fileID: 11500000, guid: 633467a91b1feae45a80214f2be38854, type: 3}
+  m_Name: GameKeys
   m_EditorClassIdentifier: 
-  Value: 8
+  optionsList:
+  - Attack
+  - Forward
+  - Backward
+  - Left
+  - Sprint
+  keysList: 4301000077000000730000006100000045010000
