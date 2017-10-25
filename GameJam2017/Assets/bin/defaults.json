@@ -3,12 +3,14 @@
         "Attack",
         "Forward",
         "Backward",
-        "Left"
+        "Left",
+        "Sprint"
     ],
     "values": [
         323,
         119,
         115,
-        97
+        97,
+        325
     ]
 }

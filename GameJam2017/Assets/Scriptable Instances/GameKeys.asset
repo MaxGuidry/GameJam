@@ -11,5 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633467a91b1feae45a80214f2be38854, type: 3}
   m_Name: GameKeys
   m_EditorClassIdentifier: 
-  optionsList: []
-  keysList: 
+  optionsList:
+  - Attack
+  - Forward
+  - Backward
+  - Left
+  keysList: 43010000770000007300000061000000
