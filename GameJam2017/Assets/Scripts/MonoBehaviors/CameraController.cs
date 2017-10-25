@@ -34,11 +34,16 @@ public class CameraController : MonoBehaviour
     {
         deltaMouse = (Input.mousePosition - mouse);
 
+        if (deltaMouse.y > 50f)
+            deltaMouse.y = 50f;
         transform.RotateAround(player.transform.position, new Vector3(0, 1f, 0), deltaMouse.x * (sensitivity / 180f));
         Vector3 deltaPlayer = player.transform.position - prevPlayerPos;
         this.transform.position += deltaPlayer; //new Vector3(deltaPlayer.x,0,deltaPlayer.z);
         Vector3 pos = this.transform.position;
+
         transform.RotateAround(player.transform.position, this.transform.right, -deltaMouse.y * (sensitivity / 180f));
+        if ((this.transform.position - player.transform.position).magnitude < .3f)
+            this.transform.position = pos;
         if (this.transform.position.y > player.transform.position.y + 5.5f)
             this.transform.position = pos;
         if (this.transform.position.y < player.transform.position.y + .1f)
