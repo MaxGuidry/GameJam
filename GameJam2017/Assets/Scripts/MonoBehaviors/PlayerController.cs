@@ -1,32 +1,109 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Reflection.Emit;
+using UnityEngine;
 
-// ReSharper disable InconsistentNaming
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
-{ 
-    public FloatVariable m_Speed, m_JumpForce, m_Gravity;
-    private Vector3 m_Direction = Vector3.zero;
-    private CharacterController m_PlayerController;
+{
+    public float WalkSpeed = 1;
+    public float RunSpeed = 2;
 
-    private void Start()
+    private Vector3 acceleration = Vector3.zero;
+    private Vector3 velocity = Vector3.zero;
+    private Vector3 position;
+    private Rigidbody rb;
+    private Animator anim;
+
+
+    private Transform mine;
+
+    //public Player player;
+    // Use this for initialization
+    void Start()
     {
-        m_PlayerController = gameObject.GetComponent<CharacterController>();
+        // player = ScriptableObject.CreateInstance<Player>();
+        // player.health = 10;
+        //player.damage = 10;
+        rb = GetComponent<Rigidbody>();
+        position = this.transform.position;
+        anim = GetComponent<Animator>();
+        acceleration = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+
     }
-    private void Update()
+
+    // Update is called once per frame
+    void Update()
     {
-        if (m_PlayerController.isGrounded)
+
+        //if (Input.GetKeyDown(InputMap.KeyBinds["Interact"]))
+        //{
+
+        //}
+
+
+        position = this.transform.position;
+        acceleration = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+        acceleration *= 20;
+        float Speed = (Input.GetKey(KeyCode.LeftAlt)) ? RunSpeed : WalkSpeed;
+        if (Input.GetKey(KeyCode.W) && velocity.magnitude < Speed)
         {
-            m_Direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            velocity = acceleration.normalized * velocity.magnitude;
 
-            m_Direction = transform.TransformDirection(m_Direction);
-            m_Direction *= m_Speed.Value;
-
-            if (Input.GetButtonDown("Jump"))
-                m_Direction.y = m_JumpForce.Value;
+            velocity += acceleration * Time.deltaTime;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Forward"]))
+        {
+            velocity += acceleration * Time.deltaTime;
+            velocity = velocity.normalized * Speed;
+        }
+        else
+        {
+            Vector3 v = new Vector3(velocity.x, 0, velocity.z);
+            velocity += -velocity * ((v.magnitude * 25f) / WalkSpeed) * Time.deltaTime;
         }
 
-        m_Direction.y -= m_Gravity.Value * Time.deltaTime;
-        m_PlayerController.Move(m_Direction * Time.deltaTime);
-    }
-}
+        position += velocity * Time.deltaTime;
+        //anim.SetFloat("velocity", velocity.magnitude);
+        this.transform.position = position;
+        Quaternion q = this.transform.rotation;
 
+        this.transform.LookAt(this.transform.position + velocity);
+        this.transform.rotation = Quaternion.Slerp(q, this.transform.rotation, .2f);
+
+        if (Input.GetKeyDown(InputMap.KeyBinds["Attack"]))
+            Attack();
+    }
+    //else
+    //{
+    //    this.transform.position = mine.position;
+    //    this.transform.rotation = mine.transform.rotation;
+    //}
+
+
+
+
+    void Attack()
+    {
+        //anim.SetTrigger("attack");
+
+    }
+
+    public void TryToHit()
+    {
+        RaycastHit hit;
+        Physics.Raycast(new Ray(this.transform.position + new Vector3(0, 1, 0), this.transform.forward), out hit, 10);
+
+        if (hit.transform == null)
+            return;
+        //EnemyController ec = hit.transform.gameObject.GetComponent<EnemyController>();
+        //if (ec != null)
+        //{
+
+        //    player.DoDamage(ec.enemy);
+        //    ec.GetHit();
+        //}
+    }
+
+
+}
+//+ (this.transform.localScale.y / 2f - 1f) + position.y

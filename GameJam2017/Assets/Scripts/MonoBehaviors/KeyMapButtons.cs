@@ -12,7 +12,9 @@ public class KeyMapButtons : MonoBehaviour
 {
     Event e;
     // Use this for initialization
-    public Canvas menu;
+    // public Canvas menu;
+
+    public GameObject MenuParent;
     public GameObject ButtonPrefab;
 
     //private string pressed;
@@ -45,23 +47,19 @@ public class KeyMapButtons : MonoBehaviour
                 c++;
             }
         }
-        //InputMap.Attack = KeyCode.Mouse0;
-        //InputMap.Jump = KeyCode.Space;
-        //InputMap.Interact = KeyCode.F;
-        //InputMap.MoveForward = KeyCode.W;
-        //InputMap.MoveLeft = KeyCode.A;
-        //InputMap.MoveBack = KeyCode.S;
-        //InputMap.MoveRight = KeyCode.D;
+
         int j = 0;
-        int k = 5;
+        int k = -5;
+
         foreach (var keyCode in InputMap.KeyBinds.Values)
         {
-            GameObject g = Instantiate(ButtonPrefab);
-            g.transform.SetParent(menu.gameObject.transform);
-            g.transform.position = g.transform.parent.position;
-            RectTransform rt = g.GetComponent<RectTransform>();
-            rt.position =
-                new Vector3(370, 208 + k * rt.sizeDelta.y, 0);
+            GameObject g = Instantiate(ButtonPrefab, MenuParent.transform);
+
+            //g.transform.SetParent(menu.gameObject.transform);
+            //g.transform.localPosition = g.transform.parent.position;
+            //RectTransform rt = g.GetComponent<RectTransform>();
+
+            //rt.localPosition =new Vector3(0, k * rt.sizeDelta.y + .5f, 0);
             // object o = settingsprop.GetValue(settingsprops, null);
             // string s = o.ToString();
             List<string> keys = new List<string>(InputMap.KeyBinds.Keys);
@@ -72,17 +70,17 @@ public class KeyMapButtons : MonoBehaviour
             //g.gameObject.AddComponent<DisableWhenClicked>();
             g.gameObject.GetComponent<Button>().onClick.AddListener(StartWait);
             g.gameObject.GetComponent<Button>().onClick.AddListener(disable);
-           // g.gameObject.GetComponent<Button>().onClick.AddListener(g.GetComponent<DisableWhenClicked>().disable);
+            // g.gameObject.GetComponent<Button>().onClick.AddListener(g.GetComponent<DisableWhenClicked>().disable);
             buttons.Add(g);
             j++;
             k--;
         }
         GameObject go = Instantiate(ButtonPrefab);
-        go.transform.SetParent(menu.gameObject.transform);
+        go.transform.SetParent(MenuParent.transform);
         go.transform.position = go.transform.parent.position;
-        RectTransform rct = go.GetComponent<RectTransform>();
-        rct.position =
-            new Vector3(370, 208 + k * rct.sizeDelta.y, 0);
+        //RectTransform rct = go.GetComponent<RectTransform>();
+        // rct.position =
+        //   new Vector3(370, 208 + k * rct.sizeDelta.y, 0);
         go.gameObject.GetComponentInChildren<Text>().text = "Load Defaults";
         go.gameObject.GetComponent<Button>().onClick.AddListener(InputMap.LoadDefaults);
         go.gameObject.GetComponent<Button>().onClick.AddListener(this.UpdateButtonInfo);
@@ -219,9 +217,9 @@ public class KeyMapButtons : MonoBehaviour
         List<string> keys = new List<string>(InputMap.KeyBinds.Keys);
         List<KeyCode> values = new List<KeyCode>(InputMap.KeyBinds.Values);
         int i = 0;
-        foreach(var b in buttons)
+        foreach (var b in buttons)
         {
-            b.gameObject.GetComponentInChildren<Text>().text =  keys[i] + ": " + values[i];
+            b.gameObject.GetComponentInChildren<Text>().text = keys[i] + ": " + values[i];
             i++;
         }
     }
