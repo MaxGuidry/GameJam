@@ -1,0 +1,14 @@
+{
+    "keys": [
+        "Attack",
+        "Forward",
+        "Backward",
+        "Left"
+    ],
+    "values": [
+        323,
+        119,
+        115,
+        97
+    ]
+}
