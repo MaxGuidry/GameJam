@@ -18,7 +18,5 @@ public class EnemyUI : MonoBehaviour
 	void Update ()
 	{
 	    EnemyHealthSlider.value = Enemy.m_EnemyStats.GetStat("EnemyHealth").Value;
-        if(Input.GetKeyDown(KeyCode.Space))
-            Enemy.TakeDamage(10);
 	}
 }
