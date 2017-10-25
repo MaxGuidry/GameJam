@@ -13,15 +13,15 @@ public class GameKeys : ScriptableObject
     [CustomEditor(typeof(GameKeys))]
     public class GameKeysEditor : Editor
     {
-        private Event e;
-        private bool listen = false;
+        //private Event e;
+        //private bool listen = false;
        // private List<string> options = new List<string>();
        // private int index = 0;
         List<string> keys = new List<string>();
         List<KeyCode> tracker = new List<KeyCode>();
         public override void OnInspectorGUI()
         {
-            e = Event.current;
+            //e = Event.current;
             GameKeys g = target as GameKeys;
            // options = g.optionsList;
             int i = 0;

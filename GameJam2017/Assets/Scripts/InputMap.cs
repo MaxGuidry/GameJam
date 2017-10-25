@@ -8,25 +8,7 @@ using UnityEngine;
 
 public static class InputMap
 {
-    [Serializable]
-    class SavableSettings
-    {
-        //public KeyCode sAttack;
-        //public KeyCode sJump;
-        //public KeyCode sInteract;
-        //public KeyCode sMoveForward;
-        //public KeyCode sMoveLeft;
-        //public KeyCode sMoveRight;
-        //public KeyCode sMoveBack;
-    }
-
-    //public static KeyCode Attack { get; set; }
-    //public static KeyCode Jump { get; set; }
-    //public static KeyCode Interact { get; set; }
-    //public static KeyCode MoveForward { get; set; }
-    //public static KeyCode MoveLeft { get; set; }
-    //public static KeyCode MoveRight { get; set; }
-    //public static KeyCode MoveBack { get; set; }
+    
     public static Dictionary<string, KeyCode> KeyBinds = new Dictionary<string, KeyCode>();
 
     [Serializable]
