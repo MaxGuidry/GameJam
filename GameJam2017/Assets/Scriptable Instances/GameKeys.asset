@@ -16,5 +16,7 @@ MonoBehaviour:
   - Forward
   - Backward
   - Left
+  - Right
+  - Block
   - Sprint
-  keysList: 4301000077000000730000006100000045010000
+  keysList: 43010000770000007300000061000000640000004501000030010000

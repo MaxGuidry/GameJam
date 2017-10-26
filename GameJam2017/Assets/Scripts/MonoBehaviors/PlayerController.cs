@@ -14,8 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Animator anim;
 
-
-    private Transform mine;
+    public StatSciptable stats;
 
     //public Player player;
     // Use this for initialization
@@ -24,6 +23,10 @@ public class PlayerController : MonoBehaviour
         // player = ScriptableObject.CreateInstance<Player>();
         // player.health = 10;
         //player.damage = 10;
+        stats._Alive = true;
+        stats.GetStat("PlayerDamage").Value = 10;
+        stats.GetStat("PlayerHealth").Value = 100;
+        stats.GetStat("PlayerStamina").Value = 50;
         rb = GetComponent<Rigidbody>();
         position = this.transform.position;
         anim = GetComponent<Animator>();
@@ -35,24 +38,135 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        //if (Input.GetKeyDown(InputMap.KeyBinds["Interact"]))
-        //{
-
-        //}
-
-
+       
         position = this.transform.position;
         acceleration = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
-        acceleration *= 20;
-        float Speed = (Input.GetKey(KeyCode.LeftAlt)) ? RunSpeed : WalkSpeed;
-        if (Input.GetKey(KeyCode.W) && velocity.magnitude < Speed)
-        {
-            velocity = acceleration.normalized * velocity.magnitude;
+        acceleration *= 20;     
 
+
+        if (Input.GetKeyDown(KeyCode.None))
+            Debug.Log("none");
+        float Speed = (Input.GetKey(InputMap.KeyBinds["Sprint"])) ? RunSpeed : WalkSpeed;
+        if (Input.GetKey(InputMap.KeyBinds["Forward"]) && Input.GetKey(InputMap.KeyBinds["Left"]) && velocity.magnitude < Speed)
+        {
+            float mag = acceleration.magnitude;
+            float angle = -45 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity = acceleration.normalized * velocity.magnitude;
+            velocity += acceleration * Time.deltaTime;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Forward"]) && Input.GetKey(InputMap.KeyBinds["Left"]))
+        {
+            float mag = acceleration.magnitude;
+            float angle = -45 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity += acceleration * Time.deltaTime;
+            velocity = velocity.normalized * Speed;
+        }
+
+        else if (Input.GetKey(InputMap.KeyBinds["Forward"]) && Input.GetKey(InputMap.KeyBinds["Right"]) && velocity.magnitude < Speed)
+        {
+            float mag = acceleration.magnitude;
+            float angle = 45 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity = acceleration.normalized * velocity.magnitude;
+            velocity += acceleration * Time.deltaTime;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Forward"]) && Input.GetKey(InputMap.KeyBinds["Right"]))
+        {
+            float mag = acceleration.magnitude;
+            float angle = 45 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity += acceleration * Time.deltaTime;
+            velocity = velocity.normalized * Speed;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && Input.GetKey(InputMap.KeyBinds["Left"]) && velocity.magnitude < Speed)
+        {
+            float mag = acceleration.magnitude;
+            float angle = -135 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity = acceleration.normalized * velocity.magnitude;
+            velocity += acceleration * Time.deltaTime;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && Input.GetKey(InputMap.KeyBinds["Left"]))
+        {
+            float mag = acceleration.magnitude;
+            float angle = -135 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity += acceleration * Time.deltaTime;
+            velocity = velocity.normalized * Speed;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && Input.GetKey(InputMap.KeyBinds["Right"]) && velocity.magnitude < Speed)
+        {
+            float mag = acceleration.magnitude;
+            float angle = 135 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity = acceleration.normalized * velocity.magnitude;
+            velocity += acceleration * Time.deltaTime;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && Input.GetKey(InputMap.KeyBinds["Right"]))
+        {
+            float mag = acceleration.magnitude;
+            float angle = 135 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity += acceleration * Time.deltaTime;
+            velocity = velocity.normalized * Speed;
+        }
+
+
+        else if (Input.GetKey(InputMap.KeyBinds["Forward"]) && velocity.magnitude < Speed)
+        {
+
+            velocity = acceleration.normalized * velocity.magnitude;
             velocity += acceleration * Time.deltaTime;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Forward"]))
         {
+
+            velocity += acceleration * Time.deltaTime;
+            velocity = velocity.normalized * Speed;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Right"]) && velocity.magnitude < Speed)
+        {
+            float mag = acceleration.magnitude;
+            float angle = 90 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity = acceleration.normalized * velocity.magnitude;
+            velocity += acceleration * Time.deltaTime;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Right"]))
+        {
+            float mag = acceleration.magnitude;
+            float angle = 90 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity += acceleration * Time.deltaTime;
+            velocity = velocity.normalized * Speed;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && velocity.magnitude < Speed)
+        {
+            acceleration = -acceleration;
+            velocity = acceleration.normalized * velocity.magnitude;
+            velocity += acceleration * Time.deltaTime;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Backward"]))
+        {
+            acceleration = -acceleration;
+            velocity += acceleration * Time.deltaTime;
+            velocity = velocity.normalized * Speed;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Left"]) && velocity.magnitude < Speed)
+        {
+            float mag = acceleration.magnitude;
+            float angle = -90 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
+            velocity = acceleration.normalized * velocity.magnitude;
+            velocity += acceleration * Time.deltaTime;
+        }
+        else if (Input.GetKey(InputMap.KeyBinds["Left"]))
+        {
+            float mag = acceleration.magnitude;
+            float angle = -90 * Mathf.Deg2Rad;
+            acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity += acceleration * Time.deltaTime;
             velocity = velocity.normalized * Speed;
         }
@@ -73,15 +187,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(InputMap.KeyBinds["Attack"]))
             Attack();
     }
-    //else
-    //{
-    //    this.transform.position = mine.position;
-    //    this.transform.rotation = mine.transform.rotation;
-    //}
-
-
-
-
+   
     void Attack()
     {
         //anim.SetTrigger("attack");

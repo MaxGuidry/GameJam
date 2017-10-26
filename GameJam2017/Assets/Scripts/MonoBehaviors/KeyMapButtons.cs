@@ -75,8 +75,8 @@ public class KeyMapButtons : MonoBehaviour
             j++;
             k--;
         }
-        GameObject go = Instantiate(ButtonPrefab);
-        go.transform.SetParent(MenuParent.transform);
+        GameObject go = Instantiate(ButtonPrefab, MenuParent.transform);
+
         go.transform.position = go.transform.parent.position;
         //RectTransform rct = go.GetComponent<RectTransform>();
         // rct.position =
@@ -119,7 +119,7 @@ public class KeyMapButtons : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1))
             InputMap.SaveSettings();
 
-
+       
     }
 
     void OnDisable()
@@ -181,9 +181,10 @@ public class KeyMapButtons : MonoBehaviour
         {
 
 
-            if (!button.activeInHierarchy)
+            if (!button.GetComponent<Button>().interactable)
             {
-                button.SetActive(true);
+                //button.SetActive(true);'
+                button.GetComponent<Button>().interactable = true;
                 //settingsprop.SetValue(this, code, null);
                 List<KeyCode> keys = new List<KeyCode>();
                 foreach (var keyBindsValue in InputMap.KeyBinds.Values)
@@ -226,7 +227,11 @@ public class KeyMapButtons : MonoBehaviour
 
     public void disable()
     {
-        EventSystem.current.currentSelectedGameObject.SetActive(false);
+        if (EventSystem.current.currentSelectedGameObject == null)
+            return;
+        if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() == null)
+            return; 
+        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
 
         //this.gameObject.SetActive(false);
 
