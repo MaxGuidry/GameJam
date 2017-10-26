@@ -62,10 +62,22 @@ public class MainMenu : MonoBehaviour
         Buttons.SetActive(true);
         PauseButtons.SetActive(false);
     }
-    public void Slider(float value)
+
+    public void InvertMouse()
+    {
+        InputMap.Sensitivity *= -1;
+    }
+
+    public void MouseSensitivitySlider(float value)
+    {
+      InputMap.Sensitivity = value;
+    }
+
+    public void AudioSlider(float value)
     {
         _backSound.volume = value;
     }
+
     public IEnumerator Load()
     {
         yield return new WaitForSeconds(2);
