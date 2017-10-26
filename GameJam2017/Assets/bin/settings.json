@@ -4,6 +4,8 @@
         "Forward",
         "Backward",
         "Left",
+        "Right",
+        "Block",
         "Sprint"
     ],
     "values": [
@@ -11,6 +13,8 @@
         119,
         115,
         97,
-        308
+        100,
+        325,
+        304
     ]
 }
