@@ -17,8 +17,8 @@ public class CameraController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-           
-        
+
+        Camera.main.gameObject.transform.position = player.transform.position + new Vector3(0f, 3f, -7f);
         prevPlayerPos = player.transform.position;
         //y_offset = this.transform.position.y - player.transform.position.y;
         //offsetVec = this.transform.position - player.transform.position;
