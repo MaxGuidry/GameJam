@@ -81,6 +81,7 @@ public class MainMenu : MonoBehaviour
     public IEnumerator Load()
     {
         yield return new WaitForSeconds(2);
+        InputMap.SaveSettings();
         SceneManager.LoadScene("0.MainGame");
     }
 
