@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         _backSound = GetComponent<AudioSource>();
+        _backSound.volume = 1;
         _backSound.clip = MusicClip;
         _backSound.Play();
         StartCoroutine(ColorChange());
@@ -56,6 +57,15 @@ public class MainMenu : MonoBehaviour
         PauseButtons.SetActive(true);
     }
 
+    public void Back()
+    {
+        Buttons.SetActive(true);
+        PauseButtons.SetActive(false);
+    }
+    public void Slider(float value)
+    {
+        _backSound.volume = value;
+    }
     public IEnumerator Load()
     {
         yield return new WaitForSeconds(2);
