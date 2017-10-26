@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
     private Vector3 position;
     private Rigidbody rb;
     private Animator anim;
-
+    public GameObject PlayerRagdoll;
     public StatSciptable stats;
 
     //public Player player;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
     // Update is called once per frame
     void Update()
     {
-
+        
 
         position = this.transform.position;
         acceleration = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             velocity += acceleration;
             if (velocity.magnitude > Speed)
                 velocity = velocity.normalized * Speed;
-            
+
 
         }
         else if (Input.GetKey(InputMap.KeyBinds["Right"]))
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity += acceleration;
             velocity = velocity.normalized * Speed;
-            
+
 
 
         }
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             velocity += acceleration;
             if (velocity.magnitude > Speed)
                 velocity = velocity.normalized * Speed;
-           
+
 
         }
         else if (Input.GetKey(InputMap.KeyBinds["Left"]))
@@ -192,10 +192,12 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity += acceleration;
             velocity = velocity.normalized * Speed;
-            
+
         }
         else
         {
+            if (velocity.magnitude < .2f)
+                velocity = Vector3.zero;
             Vector3 v = new Vector3(velocity.x, 0, velocity.z);
             velocity += -velocity * ((v.magnitude * 25f) / WalkSpeed) * Time.deltaTime;
         }
@@ -237,12 +239,29 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
 
     public void TakeDamage(float damage)
     {
+        
         stats.GetStat("PlayerHealth").Value -= damage;
+        Debug.Log(stats.GetStat("PlayerHealth").Value);
+        if (stats.GetStat("PlayerHealth").Value <= 0)
+        {
+            stats.GetStat("PlayerHealth").Value = 0;
+            stats._Alive = false;
+            Die();
+        }
+
     }
 
+    private void Die()
+    {
+        GameObject g = GameObject.Instantiate(PlayerRagdoll);
+        g.transform.position = this.gameObject.transform.position;
+        g.transform.rotation = this.gameObject.transform.rotation;
+        GameObject.Destroy(this.gameObject);
+        Camera.main.gameObject.GetComponent<CameraController>().player = g;
+    }
     public void DoDamage(IDamageable defender)
     {
-        throw new System.NotImplementedException();
+        defender.TakeDamage(stats.GetStat("PlayerDamage").Value);
     }
 }
 //+ (this.transform.localScale.y / 2f - 1f) + position.y
