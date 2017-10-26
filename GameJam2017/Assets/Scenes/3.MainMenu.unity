@@ -665,10 +665,10 @@ RectTransform:
   m_Father: {fileID: 1711922164}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.23026028, y: 0.19226167}
-  m_AnchorMax: {x: 0.7664795, y: 0.254}
-  m_AnchoredPosition: {x: 0.5, y: 0}
-  m_SizeDelta: {x: 1, y: 2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000045776367, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514711356
 MonoBehaviour:
@@ -1195,7 +1195,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &989748239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,6 +1600,7 @@ MonoBehaviour:
   MusicClip: {fileID: 8300000, guid: 4630e7b60375d8c4f850d13007f424fd, type: 3}
   Buttons: {fileID: 1279380497}
   PauseButtons: {fileID: 1711922161}
+  sensitivity: {fileID: 0}
 --- !u!82 &1165920189
 AudioSource:
   m_ObjectHideFlags: 0

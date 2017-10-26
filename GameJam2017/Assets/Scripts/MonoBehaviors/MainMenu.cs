@@ -12,11 +12,18 @@ public class MainMenu : MonoBehaviour
     public GameObject Buttons, PauseButtons;
     private AudioSource _backSound;
 
+    public Slider sensitivity;
+
+    public Toggle invertMouse;
     // Use this for initialization
     void Start()
     {
+        InputMap.LoadSettings();
         _backSound = GetComponent<AudioSource>();
         _backSound.volume = 1;
+        sensitivity.value = InputMap.Sensitivity;
+        if (InputMap.Sensitivity < 0)
+            invertMouse.isOn = true;
         _backSound.clip = MusicClip;
         _backSound.Play();
         StartCoroutine(ColorChange());
@@ -28,7 +35,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public IEnumerator ColorChange()
-    { 
+    {
         while (true)
         {
             foreach (var text in TextList)
@@ -55,6 +62,7 @@ public class MainMenu : MonoBehaviour
     {
         Buttons.SetActive(false);
         PauseButtons.SetActive(true);
+        TextList[0].gameObject.SetActive(false);
     }
 
     public void Back()
@@ -70,7 +78,7 @@ public class MainMenu : MonoBehaviour
 
     public void MouseSensitivitySlider(float value)
     {
-      InputMap.Sensitivity = value;
+        InputMap.Sensitivity = value;
     }
 
     public void AudioSlider(float value)
