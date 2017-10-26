@@ -19,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable, IDamager
     public GameObject m_ProjectilePrefab;
     public FloatVariable refreshRate;
     public IntergerVariable m_AttackCooldown;
+    public FloatVariable m_MaxEnemyHealth;
 
     private NavMeshAgent m_Agent;
     private State m_CurrentState;
@@ -43,7 +44,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable, IDamager
             return;
         m_HasTarget = true;
         m_Target = GameObject.FindGameObjectWithTag("Player").transform;
-        m_EnemyStats.GetStat("EnemyHealth").Value = 100;
+        m_EnemyStats.GetStat("EnemyHealth").Value = m_MaxEnemyHealth.Value;
     }
 
     // Use this for initialization
