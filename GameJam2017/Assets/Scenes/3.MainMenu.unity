@@ -1600,7 +1600,8 @@ MonoBehaviour:
   MusicClip: {fileID: 8300000, guid: 4630e7b60375d8c4f850d13007f424fd, type: 3}
   Buttons: {fileID: 1279380497}
   PauseButtons: {fileID: 1711922161}
-  sensitivity: {fileID: 0}
+  sensitivity: {fileID: 1008337834}
+  invertMouse: {fileID: 934502098}
 --- !u!82 &1165920189
 AudioSource:
   m_ObjectHideFlags: 0
