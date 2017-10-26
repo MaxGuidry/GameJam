@@ -15,7 +15,7 @@ TrueTypeFontImporter:
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
-  ascentCalculationMode: 1
+  ascentCalculationMode: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
