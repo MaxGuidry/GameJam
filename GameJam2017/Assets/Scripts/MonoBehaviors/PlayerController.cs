@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
         position = this.transform.position;
         anim = GetComponent<Animator>();
         acceleration = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
-
+       
     }
 
     // Update is called once per frame

@@ -6,7 +6,8 @@
         "Left",
         "Right",
         "Block",
-        "Sprint"
+        "Sprint",
+        "Pause"
     ],
     "values": [
         323,
@@ -15,6 +16,7 @@
         97,
         100,
         325,
-        304
+        304,
+        27
     ]
 }
