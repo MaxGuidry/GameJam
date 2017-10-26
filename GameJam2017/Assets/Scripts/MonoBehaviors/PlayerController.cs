@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             velocity += acceleration;
             if (velocity.magnitude > Speed)
                 velocity = velocity.normalized * Speed;
-            Debug.Log("Right Velo");
+            
 
         }
         else if (Input.GetKey(InputMap.KeyBinds["Right"]))
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity += acceleration;
             velocity = velocity.normalized * Speed;
-            Debug.Log("Right");
+            
 
 
         }
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             velocity += acceleration;
             if (velocity.magnitude > Speed)
                 velocity = velocity.normalized * Speed;
-            Debug.Log("Left velo");
+           
 
         }
         else if (Input.GetKey(InputMap.KeyBinds["Left"]))
@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity += acceleration;
             velocity = velocity.normalized * Speed;
-            Debug.Log("Left");
+            
         }
         else
         {
