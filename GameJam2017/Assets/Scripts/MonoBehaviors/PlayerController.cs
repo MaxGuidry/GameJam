@@ -31,17 +31,17 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
         position = this.transform.position;
         anim = GetComponent<Animator>();
         acceleration = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-       
+
         position = this.transform.position;
         acceleration = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
-        acceleration *= 20;     
+        acceleration *= 20;
 
 
         if (Input.GetKeyDown(KeyCode.None))
@@ -53,14 +53,16 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             float angle = -45 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity = acceleration.normalized * velocity.magnitude;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
+            if (velocity.magnitude > Speed)
+                velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Forward"]) && Input.GetKey(InputMap.KeyBinds["Left"]))
         {
             float mag = acceleration.magnitude;
             float angle = -45 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
             velocity = velocity.normalized * Speed;
         }
 
@@ -70,14 +72,16 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             float angle = 45 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity = acceleration.normalized * velocity.magnitude;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
+            if (velocity.magnitude > Speed)
+                velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Forward"]) && Input.GetKey(InputMap.KeyBinds["Right"]))
         {
             float mag = acceleration.magnitude;
             float angle = 45 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
             velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && Input.GetKey(InputMap.KeyBinds["Left"]) && velocity.magnitude < Speed)
@@ -86,14 +90,16 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             float angle = -135 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity = acceleration.normalized * velocity.magnitude;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
+            if (velocity.magnitude > Speed)
+                velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && Input.GetKey(InputMap.KeyBinds["Left"]))
         {
             float mag = acceleration.magnitude;
             float angle = -135 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
             velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && Input.GetKey(InputMap.KeyBinds["Right"]) && velocity.magnitude < Speed)
@@ -102,14 +108,16 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             float angle = 135 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity = acceleration.normalized * velocity.magnitude;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
+            if (velocity.magnitude > Speed)
+                velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && Input.GetKey(InputMap.KeyBinds["Right"]))
         {
             float mag = acceleration.magnitude;
             float angle = 135 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
             velocity = velocity.normalized * Speed;
         }
 
@@ -118,12 +126,14 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
         {
 
             velocity = acceleration.normalized * velocity.magnitude;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
+            if (velocity.magnitude > Speed)
+                velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Forward"]))
         {
 
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
             velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Right"]) && velocity.magnitude < Speed)
@@ -132,26 +142,35 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             float angle = 90 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity = acceleration.normalized * velocity.magnitude;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
+            if (velocity.magnitude > Speed)
+                velocity = velocity.normalized * Speed;
+            Debug.Log("Right Velo");
+
         }
         else if (Input.GetKey(InputMap.KeyBinds["Right"]))
         {
             float mag = acceleration.magnitude;
             float angle = 90 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
             velocity = velocity.normalized * Speed;
+            Debug.Log("Right");
+
+
         }
         else if (Input.GetKey(InputMap.KeyBinds["Backward"]) && velocity.magnitude < Speed)
         {
             acceleration = -acceleration;
             velocity = acceleration.normalized * velocity.magnitude;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
+            if (velocity.magnitude > Speed)
+                velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Backward"]))
         {
             acceleration = -acceleration;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
             velocity = velocity.normalized * Speed;
         }
         else if (Input.GetKey(InputMap.KeyBinds["Left"]) && velocity.magnitude < Speed)
@@ -160,15 +179,20 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
             float angle = -90 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
             velocity = acceleration.normalized * velocity.magnitude;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
+            if (velocity.magnitude > Speed)
+                velocity = velocity.normalized * Speed;
+            Debug.Log("Left velo");
+
         }
         else if (Input.GetKey(InputMap.KeyBinds["Left"]))
         {
             float mag = acceleration.magnitude;
             float angle = -90 * Mathf.Deg2Rad;
             acceleration = new Quaternion(0, Mathf.Sin(angle / 2f), 0, Mathf.Cos(angle / 2f)) * acceleration;
-            velocity += acceleration * Time.deltaTime;
+            velocity += acceleration;
             velocity = velocity.normalized * Speed;
+            Debug.Log("Left");
         }
         else
         {
@@ -187,7 +211,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
         if (Input.GetKeyDown(InputMap.KeyBinds["Attack"]))
             Attack();
     }
-   
+
     void Attack()
     {
         //anim.SetTrigger("attack");
