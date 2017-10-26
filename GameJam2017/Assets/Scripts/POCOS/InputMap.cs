@@ -81,6 +81,7 @@ public static class InputMap
         SaveKeys saved = JsonUtility.FromJson<SaveKeys>(Json);
         int i = 0;
         KeyBinds.Clear();
+        Sensitivity = saved.sensitivity;
         foreach (var key in saved.keys)
         {
             KeyBinds.Add(key, saved.values[i]);
@@ -99,13 +100,15 @@ public static class InputMap
         //KeyBinds = JsonUtility.FromJson<Dictionary<string, KeyCode>>(Json);
         SaveKeys saved = JsonUtility.FromJson<SaveKeys>(Json);
         int i = 0;
+
         KeyBinds.Clear();
         foreach (var key in saved.keys)
         {
             KeyBinds.Add(key,saved.values[i]);
             i++;
         }
-        
+        InputMap.Sensitivity = saved.sensitivity;
+
     }
     public static KeyCode WhatMouseButton(int i)
     {
