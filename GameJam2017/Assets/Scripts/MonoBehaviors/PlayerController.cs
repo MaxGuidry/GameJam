@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable, IDamager
 {
     public float WalkSpeed = 1;
     public float RunSpeed = 2;
@@ -211,5 +211,14 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public void TakeDamage(float damage)
+    {
+        stats.GetStat("PlayerHealth").Value -= damage;
+    }
+
+    public void DoDamage(IDamageable defender)
+    {
+        throw new System.NotImplementedException();
+    }
 }
 //+ (this.transform.localScale.y / 2f - 1f) + position.y
