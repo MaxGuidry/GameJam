@@ -69,6 +69,7 @@ public class MainMenu : MonoBehaviour
     {
         Buttons.SetActive(true);
         PauseButtons.SetActive(false);
+        TextList[0].gameObject.SetActive(true);
     }
 
     public void InvertMouse()
