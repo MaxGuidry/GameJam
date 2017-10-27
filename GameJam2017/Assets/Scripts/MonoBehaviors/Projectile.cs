@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Hit");
             var damageableObject = other.gameObject.GetComponent<IDamageable>();
             if (damageableObject != null)
                 damageableObject.TakeDamage(Damage);
