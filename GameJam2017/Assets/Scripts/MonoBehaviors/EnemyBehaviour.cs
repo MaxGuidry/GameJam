@@ -59,6 +59,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable, IDamager
     // Update is called once per frame
     private void Update()
     {
+        if (!m_Target) return;
         if (m_EnemyStats.GetStat("EnemyHealth").Value <= 0)
             m_EnemyStats._Alive = false;
         if (!m_EnemyStats._Alive)
