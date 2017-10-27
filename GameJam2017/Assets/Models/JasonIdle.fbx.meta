@@ -1,0 +1,276 @@
+fileFormatVersion: 2
+guid: 08e5d302f71085049a365632c713800b
+timeCreated: 1509145600
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Eye
+    100002: Eye1
+    100004: Eyes
+    100006: Head_JawEndSHJnt
+    100008: Head_JawSHJnt
+    100010: Head_TopSHJnt
+    100012: Jason
+    100014: //RootNode
+    100016: l_Arm_ClavicleSHJnt
+    100018: l_Arm_ElbowSHJnt
+    100020: l_Arm_ShoulderSHJnt
+    100022: l_Arm_WristSHJnt
+    100024: l_Eye_01SHJnt
+    100026: l_Finger_01_01SHJnt
+    100028: l_Finger_01_02SHJnt
+    100030: l_Finger_01_03SHJnt
+    100032: l_Finger_01_04SHJnt
+    100034: l_Finger_02_01SHJnt
+    100036: l_Finger_02_02SHJnt
+    100038: l_Finger_02_03SHJnt
+    100040: l_Finger_02_04SHJnt
+    100042: l_Finger_03_01SHJnt
+    100044: l_Finger_03_02SHJnt
+    100046: l_Finger_03_03SHJnt
+    100048: l_Finger_03_04SHJnt
+    100050: l_Finger_04_01SHJnt
+    100052: l_Finger_04_02SHJnt
+    100054: l_Finger_04_03SHJnt
+    100056: l_Finger_04_04SHJnt
+    100058: l_Leg_AnkleSHJnt
+    100060: l_Leg_BallSHJnt
+    100062: l_Leg_HipSHJnt
+    100064: l_Leg_KneeSHJnt
+    100066: l_Leg_ToeSHJnt
+    100068: l_Thumb_01_01SHJnt
+    100070: l_Thumb_01_02SHJnt
+    100072: l_Thumb_01_03SHJnt
+    100074: l_Thumb_01_04SHJnt
+    100076: Neck_01SHJnt
+    100078: Neck_02SHJnt
+    100080: Neck_TopSHJnt
+    100082: polySurface1
+    100084: r_Arm_ClavicleSHJnt
+    100086: r_Arm_ElbowSHJnt
+    100088: r_Arm_ShoulderSHJnt
+    100090: r_Arm_WristSHJnt
+    100092: r_Eye_01SHJnt
+    100094: r_Finger_01_01SHJnt
+    100096: r_Finger_01_02SHJnt
+    100098: r_Finger_01_03SHJnt
+    100100: r_Finger_01_04SHJnt
+    100102: r_Finger_02_01SHJnt
+    100104: r_Finger_02_02SHJnt
+    100106: r_Finger_02_03SHJnt
+    100108: r_Finger_02_04SHJnt
+    100110: r_Finger_03_01SHJnt
+    100112: r_Finger_03_02SHJnt
+    100114: r_Finger_03_03SHJnt
+    100116: r_Finger_03_04SHJnt
+    100118: r_Finger_04_01SHJnt
+    100120: r_Finger_04_02SHJnt
+    100122: r_Finger_04_03SHJnt
+    100124: r_Finger_04_04SHJnt
+    100126: r_Leg_AnkleSHJnt
+    100128: r_Leg_BallSHJnt
+    100130: r_Leg_HipSHJnt
+    100132: r_Leg_KneeSHJnt
+    100134: r_Leg_ToeSHJnt
+    100136: r_Thumb_01_01SHJnt
+    100138: r_Thumb_01_02SHJnt
+    100140: r_Thumb_01_03SHJnt
+    100142: r_Thumb_01_04SHJnt
+    100144: ROOTSHJnt
+    100146: SHJntGrp
+    100148: Spine_01SHJnt
+    100150: Spine_02SHJnt
+    100152: Spine_03SHJnt
+    100154: Spine_04SHJnt
+    100156: Spine_TopSHJnt
+    400000: Eye
+    400002: Eye1
+    400004: Eyes
+    400006: Head_JawEndSHJnt
+    400008: Head_JawSHJnt
+    400010: Head_TopSHJnt
+    400012: Jason
+    400014: //RootNode
+    400016: l_Arm_ClavicleSHJnt
+    400018: l_Arm_ElbowSHJnt
+    400020: l_Arm_ShoulderSHJnt
+    400022: l_Arm_WristSHJnt
+    400024: l_Eye_01SHJnt
+    400026: l_Finger_01_01SHJnt
+    400028: l_Finger_01_02SHJnt
+    400030: l_Finger_01_03SHJnt
+    400032: l_Finger_01_04SHJnt
+    400034: l_Finger_02_01SHJnt
+    400036: l_Finger_02_02SHJnt
+    400038: l_Finger_02_03SHJnt
+    400040: l_Finger_02_04SHJnt
+    400042: l_Finger_03_01SHJnt
+    400044: l_Finger_03_02SHJnt
+    400046: l_Finger_03_03SHJnt
+    400048: l_Finger_03_04SHJnt
+    400050: l_Finger_04_01SHJnt
+    400052: l_Finger_04_02SHJnt
+    400054: l_Finger_04_03SHJnt
+    400056: l_Finger_04_04SHJnt
+    400058: l_Leg_AnkleSHJnt
+    400060: l_Leg_BallSHJnt
+    400062: l_Leg_HipSHJnt
+    400064: l_Leg_KneeSHJnt
+    400066: l_Leg_ToeSHJnt
+    400068: l_Thumb_01_01SHJnt
+    400070: l_Thumb_01_02SHJnt
+    400072: l_Thumb_01_03SHJnt
+    400074: l_Thumb_01_04SHJnt
+    400076: Neck_01SHJnt
+    400078: Neck_02SHJnt
+    400080: Neck_TopSHJnt
+    400082: polySurface1
+    400084: r_Arm_ClavicleSHJnt
+    400086: r_Arm_ElbowSHJnt
+    400088: r_Arm_ShoulderSHJnt
+    400090: r_Arm_WristSHJnt
+    400092: r_Eye_01SHJnt
+    400094: r_Finger_01_01SHJnt
+    400096: r_Finger_01_02SHJnt
+    400098: r_Finger_01_03SHJnt
+    400100: r_Finger_01_04SHJnt
+    400102: r_Finger_02_01SHJnt
+    400104: r_Finger_02_02SHJnt
+    400106: r_Finger_02_03SHJnt
+    400108: r_Finger_02_04SHJnt
+    400110: r_Finger_03_01SHJnt
+    400112: r_Finger_03_02SHJnt
+    400114: r_Finger_03_03SHJnt
+    400116: r_Finger_03_04SHJnt
+    400118: r_Finger_04_01SHJnt
+    400120: r_Finger_04_02SHJnt
+    400122: r_Finger_04_03SHJnt
+    400124: r_Finger_04_04SHJnt
+    400126: r_Leg_AnkleSHJnt
+    400128: r_Leg_BallSHJnt
+    400130: r_Leg_HipSHJnt
+    400132: r_Leg_KneeSHJnt
+    400134: r_Leg_ToeSHJnt
+    400136: r_Thumb_01_01SHJnt
+    400138: r_Thumb_01_02SHJnt
+    400140: r_Thumb_01_03SHJnt
+    400142: r_Thumb_01_04SHJnt
+    400144: ROOTSHJnt
+    400146: SHJntGrp
+    400148: Spine_01SHJnt
+    400150: Spine_02SHJnt
+    400152: Spine_03SHJnt
+    400154: Spine_04SHJnt
+    400156: Spine_TopSHJnt
+    4300000: Eye1
+    4300002: Eye
+    4300004: Jason
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Eye
+    13700002: Eye1
+    13700004: Jason
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
