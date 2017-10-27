@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ShopBehaviour : MonoBehaviour
 {
+    public PlayerController Player;
     public void Play()
     {
         SceneManager.LoadScene("0.MainGame");
