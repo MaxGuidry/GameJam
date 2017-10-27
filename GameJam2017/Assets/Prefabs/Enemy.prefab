@@ -25,14 +25,13 @@ GameObject:
   - component: {fileID: 54793332791085314}
   - component: {fileID: 195245158852599110}
   - component: {fileID: 114066462839398580}
-  - component: {fileID: 114726823932610210}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4325772452608426
 Transform:
   m_ObjectHideFlags: 1
@@ -40,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1886532523371862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 4.61, y: -0.5500001, z: 18.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,18 +128,7 @@ MonoBehaviour:
   refreshRate: {fileID: 11400000, guid: 48485b4dfdcea4d4285260be6c0f98d1, type: 2}
   m_AttackCooldown: {fileID: 11400000, guid: 6bab7958b35952744a2e590349997829, type: 2}
   m_MaxEnemyHealth: {fileID: 11400000, guid: a28f9b5734ce1fb48ae226b7ad458494, type: 2}
---- !u!114 &114726823932610210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1886532523371862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba555b4ba75ffc74f8fe15b77deb8705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyHealthSlider: {fileID: 0}
+  test: {fileID: 0}
 --- !u!195 &195245158852599110
 NavMeshAgent:
   m_ObjectHideFlags: 1

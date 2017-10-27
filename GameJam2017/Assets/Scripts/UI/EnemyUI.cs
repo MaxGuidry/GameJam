@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyUI : MonoBehaviour
 {
-    public EnemyBehaviour Enemy;
+    public MonsterBehavior Enemy;
     public Slider EnemyHealthSlider;
     public Transform target, gameTarget, overTarget;
 
@@ -23,8 +23,8 @@ public class EnemyUI : MonoBehaviour
         _backSound = GetComponent<AudioSource>();
         playOnce = false;
         restartGame = false;
-        EnemyHealthSlider.maxValue = Enemy.m_EnemyStats.GetStat("EnemyHealth").Value;
-        EnemyHitPoints.text = Enemy.m_EnemyStats.GetStat("EnemyHealth").Value.ToString();
+        EnemyHealthSlider.maxValue = Enemy.stats.GetStat("EnemyHealth").Value;
+        EnemyHitPoints.text = Enemy.stats.GetStat("EnemyHealth").Value.ToString();
         StartCoroutine(GameOver());
         StartCoroutine(RestartGame());
     }
@@ -33,8 +33,8 @@ public class EnemyUI : MonoBehaviour
     void Update()
     {
         if (!Enemy) return;
-        EnemyHealthSlider.value = Enemy.m_EnemyStats.GetStat("EnemyHealth").Value;
-        EnemyHitPoints.text = Enemy.m_EnemyStats.GetStat("EnemyHealth").Value.ToString();
+        EnemyHealthSlider.value = Enemy.stats.GetStat("EnemyHealth").Value;
+        EnemyHitPoints.text = Enemy.stats.GetStat("EnemyHealth").Value.ToString();
         if (Input.GetKeyDown(KeyCode.Space))
             Enemy.TakeDamage(100);
     }
