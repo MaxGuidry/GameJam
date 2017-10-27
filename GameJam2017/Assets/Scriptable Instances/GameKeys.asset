@@ -16,5 +16,8 @@ MonoBehaviour:
   - Forward
   - Backward
   - Left
+  - Right
+  - Block
   - Sprint
-  keysList: 4301000077000000730000006100000045010000
+  - Pause
+  keysList: 430100007700000073000000610000006400000045010000300100001b000000

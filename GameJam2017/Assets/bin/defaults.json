@@ -4,13 +4,20 @@
         "Forward",
         "Backward",
         "Left",
-        "Sprint"
+        "Right",
+        "Block",
+        "Sprint",
+        "Pause"
     ],
     "values": [
         323,
         119,
         115,
         97,
-        325
-    ]
+        100,
+        325,
+        304,
+        27
+    ],
+    "sensitivity": 0.0
 }

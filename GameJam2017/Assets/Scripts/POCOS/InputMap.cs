@@ -10,13 +10,14 @@ public static class InputMap
 {
     
     public static Dictionary<string, KeyCode> KeyBinds = new Dictionary<string, KeyCode>();
-
+    public static float Sensitivity;
     [Serializable]
     class SaveKeys
     {
         //public Dictionary<string, KeyCode> binds = new Dictionary<string, KeyCode>();
         public List<string> keys = new List<string>();
         public List<KeyCode> values = new List<KeyCode>();
+        public float sensitivity;
     }
 
     public static void SaveSettings()
@@ -36,6 +37,7 @@ public static class InputMap
         SaveKeys save = new SaveKeys();
         save.keys = new List<string>(KeyBinds.Keys);
         save.values = new List<KeyCode>(KeyBinds.Values);
+        save.sensitivity = InputMap.Sensitivity;
         //Dictionary<string, KeyCode> Kb = new Dictionary<string, KeyCode>(KeyBinds);
 
         //save.binds = KeyBinds;
@@ -79,6 +81,7 @@ public static class InputMap
         SaveKeys saved = JsonUtility.FromJson<SaveKeys>(Json);
         int i = 0;
         KeyBinds.Clear();
+        Sensitivity = saved.sensitivity;
         foreach (var key in saved.keys)
         {
             KeyBinds.Add(key, saved.values[i]);
@@ -97,13 +100,15 @@ public static class InputMap
         //KeyBinds = JsonUtility.FromJson<Dictionary<string, KeyCode>>(Json);
         SaveKeys saved = JsonUtility.FromJson<SaveKeys>(Json);
         int i = 0;
+
         KeyBinds.Clear();
         foreach (var key in saved.keys)
         {
             KeyBinds.Add(key,saved.values[i]);
             i++;
         }
-        
+        InputMap.Sensitivity = saved.sensitivity;
+
     }
     public static KeyCode WhatMouseButton(int i)
     {
