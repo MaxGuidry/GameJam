@@ -58,8 +58,19 @@ public class MonsterBehavior : MonoBehaviour,IDamageable,IDamager
     public void TakeDamage(float damage)
     {
         stats.GetStat("EnemyHealth").Value -= damage;
+        if (stats.GetStat("EnemyHealth").Value <= 0)
+        {
+            stats.GetStat("EnemyHealth").Value = 0;
+            stats._Alive = false;
+            Die();
+        }
     }
 
+    void Die()
+    {
+        m_anim.SetTrigger("Dead");
+        agent.isStopped = true;
+    }
     public void DoDamage(IDamageable defender)
     {
         defender.TakeDamage(stats.GetStat("EnemyDamage").Value);
