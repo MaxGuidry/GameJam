@@ -8,8 +8,7 @@ public class CameraController : MonoBehaviour
 
 
     private Vector3 deltaMouse;
-    //private float y_offset;
-    //private Vector3 offsetVec;
+
     private Vector3 prevPlayerPos;
 
     private float NormalDist;
@@ -135,10 +134,12 @@ public class CameraController : MonoBehaviour
                     this.transform.position += this.transform.forward * .1f;
                     transform.LookAt(player.transform.position + new Vector3(0, 2f, 0));
                     i++;
-                    if (i > 700)
+                    if (i > 300)
                     {
                         break;
                     }
+                    if (hit.transform == null)
+                        break;
                     if (hit.transform.gameObject == null)
                         break;
                 }

@@ -241,7 +241,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
     {
         
         stats.GetStat("PlayerHealth").Value -= damage;
-        Debug.Log(stats.GetStat("PlayerHealth").Value);
+       // Debug.Log(stats.GetStat("PlayerHealth").Value);
         if (stats.GetStat("PlayerHealth").Value <= 0)
         {
             stats.GetStat("PlayerHealth").Value = 0;
