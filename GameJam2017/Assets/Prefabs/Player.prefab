@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 54413671004982728}
   - component: {fileID: 136512050586863214}
   - component: {fileID: 114183173278815070}
+  - component: {fileID: 114721961650601840}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2513,8 +2514,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171986585203790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.26, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.09782261, z: -0, w: 0.99520385}
+  m_LocalPosition: {x: -6.67, y: 0, z: -24.872}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4979331648017566}
@@ -2522,7 +2523,7 @@ Transform:
   - {fileID: 4256107930562082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 11.228001, z: 0}
 --- !u!4 &4537163383240358
 Transform:
   m_ObjectHideFlags: 1
@@ -3081,6 +3082,19 @@ MonoBehaviour:
   PlayerRagdoll: {fileID: 1952074741877598, guid: 109e6f7193fba1c4ea10fad306d00618,
     type: 2}
   stats: {fileID: 11400000, guid: ae1bba5cca5763245b6a95d3c7e85ed2, type: 2}
+--- !u!114 &114721961650601840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171986585203790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bfc58e626942547b52066d17b84bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHealthSlider: {fileID: 0}
+  PlayerStaminaSlider: {fileID: 0}
 --- !u!136 &136512050586863214
 CapsuleCollider:
   m_ObjectHideFlags: 1
