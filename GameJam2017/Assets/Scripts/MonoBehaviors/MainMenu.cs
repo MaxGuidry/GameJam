@@ -8,13 +8,13 @@ public class MainMenu : MonoBehaviour
 {
     public List<Text> TextList;
     public AudioClip MusicClip;
+    public GameObject Buttons, PauseButtons, target;
+    public Slider sensitivity;
+    public Toggle invertMouse;
+    public Text broadCastText;
 
-    public GameObject Buttons, PauseButtons;
     private AudioSource _backSound;
 
-    public Slider sensitivity;
-
-    public Toggle invertMouse;
     // Use this for initialization
     void Start()
     {
@@ -27,11 +27,7 @@ public class MainMenu : MonoBehaviour
         _backSound.clip = MusicClip;
         _backSound.Play();
         StartCoroutine(ColorChange());
-    }
-
-    void Update()
-    {
-
+        StartCoroutine(BroadCast());
     }
 
     public IEnumerator ColorChange()
@@ -63,6 +59,7 @@ public class MainMenu : MonoBehaviour
         Buttons.SetActive(false);
         PauseButtons.SetActive(true);
         TextList[0].gameObject.SetActive(false);
+        broadCastText.gameObject.SetActive(false);
     }
 
     public void Back()
@@ -70,6 +67,7 @@ public class MainMenu : MonoBehaviour
         Buttons.SetActive(true);
         PauseButtons.SetActive(false);
         TextList[0].gameObject.SetActive(true);
+        broadCastText.gameObject.SetActive(true);
     }
 
     public void InvertMouse()
@@ -98,5 +96,25 @@ public class MainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         Application.Quit();
+    }
+
+    public IEnumerator BroadCast()
+    {
+        var startPos = broadCastText.transform.position;
+        var back = false;
+        while (true)
+        {
+            broadCastText.transform.position = Vector3.Lerp(
+                broadCastText.transform.position, 
+                !back ? target.transform.position : 
+                startPos, Time.deltaTime);
+            if (Vector3.Distance(broadCastText.transform.position, 
+                target.transform.position) <= 2)
+                back = true;
+            if (back && Vector3.Distance(broadCastText.transform.position, 
+                startPos) <= 2)
+                back = false;
+            yield return null;
+        }
     }
 }
