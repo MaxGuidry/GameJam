@@ -6,11 +6,8 @@ using UnityEngine.AI;
 public class MonsterBehavior : MonoBehaviour
 {
     private NavMeshAgent agent;
-    public readonly int SPEED = Animator.StringToHash("speed");
-    public readonly int ATTACK = Animator.StringToHash("attack");
-    public readonly int VERTICAL = Animator.StringToHash("ver");
-    public readonly int HORIZONTAL = Animator.StringToHash("hor");
-    public float attackDistance = .5f;
+    
+   // public float attackDistance = .5f;
     public Animator m_anim;
 
     public Transform target;
@@ -19,15 +16,16 @@ public class MonsterBehavior : MonoBehaviour
     {
         m_anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        agent.stoppingDistance = 5f;
     }
 
     // Update is called once per frame
     void Update()
     {
         var velocity = agent.velocity;
-        m_anim.SetFloat(SPEED, velocity.magnitude);
+        m_anim.SetFloat("Speed", velocity.magnitude);
         agent.SetDestination(target.transform.position);
-        if (Vector3.Distance(target.transform.position, transform.position) < attackDistance)
+        if (Vector3.Distance(target.transform.position, transform.position) < 5f)
         {
             Attack();
         }
@@ -35,6 +33,6 @@ public class MonsterBehavior : MonoBehaviour
 
     void Attack()
     {
-        m_anim.SetTrigger(ATTACK);
+        m_anim.SetTrigger("Attack");
     }
 }
