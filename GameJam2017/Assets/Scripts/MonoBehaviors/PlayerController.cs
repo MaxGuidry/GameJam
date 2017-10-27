@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
     public GameObject PlayerRagdoll;
     public StatSciptable stats;
 
+    private bool blocking;
     //public Player player;
     // Use this for initialization
     void Start()
@@ -24,9 +25,10 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
         // player.health = 10;
         //player.damage = 10;
         stats._Alive = true;
-        stats.GetStat("PlayerDamage").Value = 10;
+        stats.GetStat("PlayerDamage").Value = 30;
         stats.GetStat("PlayerHealth").Value = 100;
         stats.GetStat("PlayerStamina").Value = 50;
+
         rb = GetComponent<Rigidbody>();
         position = this.transform.position;
         anim = GetComponent<Animator>();
@@ -212,11 +214,22 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
 
         if (Input.GetKeyDown(InputMap.KeyBinds["Attack"]))
             Attack();
+        anim.SetFloat("speed",velocity.magnitude);
+        if (Input.GetKey(InputMap.KeyBinds["Block"]))
+        {
+            blocking = true;
+            anim.SetBool("blocking", true);
+        }
+        else
+        {
+            anim.SetBool("blocking", false);
+            blocking = false;
+        }
     }
 
     void Attack()
     {
-        //anim.SetTrigger("attack");
+        anim.SetTrigger("attack");
 
     }
 
@@ -227,6 +240,10 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
 
         if (hit.transform == null)
             return;
+        if (hit.transform.gameObject.GetComponent<IDamageable>() != null)
+        {
+            DoDamage(hit.transform.gameObject.GetComponent<IDamageable>());
+        }
         //EnemyController ec = hit.transform.gameObject.GetComponent<EnemyController>();
         //if (ec != null)
         //{
@@ -239,8 +256,11 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
 
     public void TakeDamage(float damage)
     {
-        
+
+        if (blocking)
+            damage = damage / 10f;
         stats.GetStat("PlayerHealth").Value -= damage;
+
        // Debug.Log(stats.GetStat("PlayerHealth").Value);
         if (stats.GetStat("PlayerHealth").Value <= 0)
         {
@@ -263,5 +283,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
     {
         defender.TakeDamage(stats.GetStat("PlayerDamage").Value);
     }
+
+   
 }
 //+ (this.transform.localScale.y / 2f - 1f) + position.y
