@@ -6,8 +6,13 @@ using UnityEngine.UI;
 
 public class ShopBehaviour : MonoBehaviour
 {
+    public PlayerController Player;
+    public GameObject PlayerStart, EnemyStart;
+    public GameObject inGameUI, Shop;
     public void Play()
     {
-        SceneManager.LoadScene("0.MainGame");
+        StopAllCoroutines();
+        inGameUI.SetActive(true);
+        Shop.SetActive(false);
     }
 }
