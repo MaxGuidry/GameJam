@@ -119,7 +119,7 @@ public class KeyMapButtons : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1))
             InputMap.SaveSettings();
 
-       
+
     }
 
     void OnDisable()
@@ -227,11 +227,20 @@ public class KeyMapButtons : MonoBehaviour
 
     public void disable()
     {
+        
         if (EventSystem.current.currentSelectedGameObject == null)
             return;
         if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>() == null)
-            return; 
-        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
+            return;
+        //GameObject g = new GameObject();
+        //Button b = g.AddComponent<Button>();
+        //b.onClick.AddListener(StartWait);
+        //b.onClick.AddListener(disable);
+        //if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>().onClick != b.onClick)
+        //    return;
+
+        if (EventSystem.current.currentSelectedGameObject.GetComponent<Button>())
+            EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
 
         //this.gameObject.SetActive(false);
 
