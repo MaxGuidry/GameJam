@@ -125,30 +125,30 @@ public class CameraController : MonoBehaviour
         Vector3 ray = new Quaternion(v.x, v.y, v.z, Mathf.Cos(50 / dist * Mathf.Deg2Rad * .5f)) * this.transform.forward;
         //Debug.DrawRay(this.transform.position, ray.normalized * 15f, Color.blue);
 
-        if (Physics.Raycast(new Ray(this.transform.position, ray), out hit, 15f))
-            if (hit.transform != null)
-            {
-                while (hit.transform.gameObject.GetComponent<PlayerController>() == null)
-                {
-                    Physics.Raycast(new Ray(this.transform.position, ray), out hit, 15f);
-                    this.transform.position += this.transform.forward * .1f;
-                    transform.LookAt(player.transform.position + new Vector3(0, 2f, 0));
-                    i++;
-                    if (i > 300)
-                    {
-                        break;
-                    }
-                    if (hit.transform == null)
-                        break;
-                    if (hit.transform.gameObject == null)
-                        break;
-                }
+        //if (Physics.Raycast(new Ray(this.transform.position, ray), out hit, 15f))
+        //    if (hit.transform != null)
+        //    {
+        //        while (hit.transform.gameObject.GetComponent<PlayerController>() == null)
+        //        {
+        //            Physics.Raycast(new Ray(this.transform.position, ray), out hit, 15f);
+        //            this.transform.position += this.transform.forward * .1f;
+        //            transform.LookAt(player.transform.position + new Vector3(0, 2f, 0));
+        //            i++;
+        //            if (i > 300)
+        //            {
+        //                break;
+        //            }
+        //            if (hit.transform == null)
+        //                break;
+        //            if (hit.transform.gameObject == null)
+        //                break;
+        //        }
 
-                if (i != 0)
-                {
-                    this.transform.position += this.transform.forward * .3f;
-                }
-            }
+        //        if (i != 0)
+        //        {
+        //            this.transform.position += this.transform.forward * .3f;
+        //        }
+        //    }
 
         prevPlayerPos = player.transform.position;
     }
