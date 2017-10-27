@@ -14,13 +14,14 @@ public class EnemyUI : MonoBehaviour
 
     public Text youText, winText;
     public AudioClip MusicClip;
-
+    public GameObject inGameUI,Shop;
     private AudioSource _backSound;
-    private bool restartGame;
+    private bool restartGame, playOnce;
     // Use this for initialization
     void Start()
     {
         _backSound = GetComponent<AudioSource>();
+        playOnce = false;
         restartGame = false;
         EnemyHealthSlider.maxValue = Enemy.m_EnemyStats.GetStat("EnemyHealth").Value;
         StartCoroutine(GameOver());
@@ -41,10 +42,15 @@ public class EnemyUI : MonoBehaviour
         {
             if (restartGame)
             {
-                _backSound.clip = MusicClip;
-                _backSound.Play();
+                if (!playOnce)
+                {
+                    _backSound.clip = MusicClip;
+                    _backSound.Play();
+                    playOnce = true;
+                }
                 yield return new WaitForSeconds(2);
-                SceneManager.LoadScene("3.MainMenu");
+                inGameUI.SetActive(false);
+                Shop.SetActive(true);
             }
             yield return null;
         }
