@@ -20,7 +20,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable, IDamager
     public FloatVariable refreshRate;
     public IntergerVariable m_AttackCooldown;
     public FloatVariable m_MaxEnemyHealth;
-
+    public DuelMusic test;
     private NavMeshAgent m_Agent;
     private State m_CurrentState;
     private bool m_HasTarget;
@@ -76,6 +76,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable, IDamager
     {
         while (m_HasTarget)
         {
+            if (!m_Target) break;
             if (m_CurrentState == State.Moving)
                 if (m_EnemyStats._Alive)
                     m_Agent.SetDestination(m_Target.position);
@@ -106,7 +107,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamageable, IDamager
     {
         var g = Instantiate(m_ProjectilePrefab);
         g.transform.position = transform.position;
-        g.GetComponent<Projectile>().Direction = m_Target.position - transform.position;
+        g.GetComponent<Projectile>().Direction = m_Target.position - transform.position + new Vector3(0,1,0);
         g.GetComponent<Projectile>().Damage = m_EnemyStats.GetStat("EnemyDamage").Value;
     }
 }
