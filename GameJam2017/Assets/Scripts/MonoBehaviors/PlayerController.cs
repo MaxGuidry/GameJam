@@ -222,8 +222,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IDamager
         }
         else
         {
-            anim.SetBool("blocking", false);
             blocking = false;
+            anim.SetBool("blocking", false);
         }
     }
 
