@@ -207,15 +207,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.61847043
-        functionName: TryToHit
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: f3890b0c36cfb71409fc85b855220209,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -243,7 +235,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.5125
+        functionName: TryToHit
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: f3890b0c36cfb71409fc85b855220209,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
