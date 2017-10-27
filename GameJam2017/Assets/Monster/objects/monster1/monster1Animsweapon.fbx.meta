@@ -2317,9 +2317,9 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: EndRot
+        functionName: StopRot
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: dd0a2cb888e244b49a435ab542b2106d,
+        objectReferenceParameter: {fileID: 11500000, guid: 7b21eadec4466b54c8c91ea165bb683f,
           type: 3}
         floatParameter: 0
         intParameter: 0
@@ -2327,7 +2327,15 @@ ModelImporter:
       - time: 1
         functionName: StartRot
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: dd0a2cb888e244b49a435ab542b2106d,
+        objectReferenceParameter: {fileID: 11500000, guid: 7b21eadec4466b54c8c91ea165bb683f,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: NotAttacking
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 7b21eadec4466b54c8c91ea165bb683f,
           type: 3}
         floatParameter: 0
         intParameter: 0

@@ -1704,19 +1704,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.31698114
-        functionName: attacksound
+      - time: 1
+        functionName: NotAttacking
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: a52b96fa86a792b4790d169dd20d6209,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.38078272
-        functionName: rayfireshort
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: bc99bba037f3052419d7e5b43c516041,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
