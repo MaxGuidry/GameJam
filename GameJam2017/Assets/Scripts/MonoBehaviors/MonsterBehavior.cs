@@ -42,6 +42,7 @@ public class MonsterBehavior : MonoBehaviour,IDamageable,IDamager
         {
             Attack();
         }
+        
     }
 
     void Attack()
@@ -70,6 +71,7 @@ public class MonsterBehavior : MonoBehaviour,IDamageable,IDamager
     {
         m_anim.SetTrigger("Dead");
         agent.isStopped = true;
+        Destroy(this.gameObject,2);
     }
     public void DoDamage(IDamageable defender)
     {
