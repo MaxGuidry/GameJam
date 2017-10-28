@@ -12,12 +12,13 @@ public class MonsterBehavior : MonoBehaviour,IDamageable,IDamager
     public Animator m_anim;
 
     public StatSciptable stats;
-    private Transform target;
+    public Transform target;
 
     private float backupDamage;
     // Use this for initialization
     void Start()
     {
+    
         
         target = GameObject.FindGameObjectWithTag("Player").transform;
         stats.GetStat("EnemyHealth").Value = 100;
@@ -33,6 +34,8 @@ public class MonsterBehavior : MonoBehaviour,IDamageable,IDamager
     // Update is called once per frame
     void Update()
     {
+        if (!target)
+            target = GameObject.FindGameObjectWithTag("Player").transform;
         if (!target || !target.gameObject)
             return;
         var velocity = agent.velocity;

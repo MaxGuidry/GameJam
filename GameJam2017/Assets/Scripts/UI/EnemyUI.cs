@@ -23,6 +23,7 @@ public class EnemyUI : MonoBehaviour
         _backSound = GetComponent<AudioSource>();
         playOnce = false;
         restartGame = false;
+
         EnemyHealthSlider.maxValue = Enemy.stats.GetStat("EnemyHealth").Value;
         EnemyHitPoints.text = Enemy.stats.GetStat("EnemyHealth").Value.ToString();
         StartCoroutine(GameOver());
@@ -32,11 +33,12 @@ public class EnemyUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Enemy)
+            Enemy = FindObjectOfType<MonsterBehavior>();
         if (!Enemy) return;
         EnemyHealthSlider.value = Enemy.stats.GetStat("EnemyHealth").Value;
         EnemyHitPoints.text = Enemy.stats.GetStat("EnemyHealth").Value.ToString();
-        if (Input.GetKeyDown(KeyCode.Space))
-            Enemy.TakeDamage(100);
+       
     }
     public IEnumerator RestartGame()
     {

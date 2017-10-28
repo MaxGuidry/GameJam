@@ -22,10 +22,10 @@ public class PlayerUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //initial1 = sword1.transform.position;
-        //initial2 = sword2.transform.position;
-        //initial3 = gameText.transform.position;
-        //initial4 = overText.transform.position;
+        initial1 = sword1.transform.position;
+        initial2 = sword2.transform.position;
+        initial3 = gameText.transform.position;
+        initial4 = overText.transform.position;
         _backSound = GetComponent<AudioSource>();
         restartGame = false;
         PlayerHealthSlider.maxValue = Player.stats.GetStat("PlayerHealth").Value;
@@ -49,8 +49,6 @@ public class PlayerUI : MonoBehaviour
         if (!Player) return;
         PlayerHealthSlider.value = Player.stats.GetStat("PlayerHealth").Value;
         PlayerStaminaSlider.value = Player.stats.GetStat("PlayerStamina").Value;
-        if (Input.GetKeyDown(KeyCode.L))
-            Player.TakeDamage(100);
     }
 
     public IEnumerator RestartGame()

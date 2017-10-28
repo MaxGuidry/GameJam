@@ -32,6 +32,10 @@ public class CameraController : MonoBehaviour
     }
     private void LateUpdate()
     {
+
+        
+        if (player == null)
+            return;
         deltaMouse = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * 10f;
 
 

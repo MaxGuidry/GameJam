@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName="StatSciptable", menuName = "Variables/StatSciptable", order = 1)]
+[CreateAssetMenu(fileName = "StatSciptable", menuName = "Variables/StatSciptable", order = 1)]
 public class StatSciptable : ScriptableObject
 {
     public List<FloatVariable> StatList;
@@ -11,6 +11,8 @@ public class StatSciptable : ScriptableObject
     void OnEnable()
     {
         StatDictionary = new Dictionary<string, FloatVariable>();
+        if (StatList == null)
+            return;
         foreach (var Stat in StatList)
         {
             StatDictionary.Add(Stat.name, Stat);
@@ -19,7 +21,12 @@ public class StatSciptable : ScriptableObject
 
     public FloatVariable GetStat(string value)
     {
-        return StatDictionary[value];
+        if (StatDictionary.ContainsKey(value))
+            return StatDictionary[value];
+        else
+        {
+            return new FloatVariable();
+        }
     }
 
     public bool _Alive;
